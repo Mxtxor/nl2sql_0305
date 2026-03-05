@@ -1,5 +1,15 @@
 # Edit Log
 
+## 2026-03-05 17:27 — glossary_preprocessing 리팩토링
+
+| 파일 | 변경 내용 |
+|---|---|
+| `glossary_utils.py` | `glossary_preprocessing(texts)` → `glossary_preprocessing(path)` 로 전면 교체. pandas `read_excel(header=1)` + 열 인덱스 접근 + `_clean()` 헬퍼 통합 |
+| `RAG2.py` | `load_glossary_from_xlsx` 삭제. `insert_glossary`에서 `glossary_preprocessing(path)` 직접 호출로 단순화 |
+| `rag_utils.py` | `ingest_glossary`의 `glossary_preprocessing(raw_data)` 중복 호출 제거. `import` 주석 처리 |
+
+---
+
 ## 2026-03-05 15:12 — requirements.txt, Dockerfile 신규 생성
 
 | 파일 | 변경 종류 | 내용 |

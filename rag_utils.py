@@ -6,7 +6,7 @@ import os
 from utils import load_embedding_model
 # from fewshot_utils import *
 # from topic_utils import *
-from glossary_utils import glossary_preprocessing
+# from glossary_utils import *
 from langchain_community.vectorstores import OpenSearchVectorSearch
 from langchain_aws import ChatBedrock
 from opensearchpy import OpenSearch
@@ -183,7 +183,6 @@ class SchemaIngester:
 
     def ingest_glossary(self, raw_data, metadatas) -> Dict[str,int]:
 
-        raw_data = glossary_preprocessing(raw_data)
         doc_ids = self.glossary_client.add_texts(texts=raw_data,
                                                  metadatas=metadatas)
 
