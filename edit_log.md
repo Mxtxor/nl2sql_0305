@@ -1,5 +1,22 @@
 # Edit Log
 
+## 2026-03-05 15:12 — requirements.txt, Dockerfile 신규 생성
+
+| 파일 | 변경 종류 | 내용 |
+|---|---|---|
+| `requirements.txt` | NEW | 프로젝트 전체 의존성 정의 (boto3, langchain, opensearch-py, openpyxl, pymysql) |
+| `Dockerfile` | NEW | python:3.12-slim 기반. 기본 CMD는 `RAG2.py` |
+
+---
+
+## 2026-03-05 15:08 — RAG2.py 신규 생성
+
+| 파일 | 변경 종류 | 내용 |
+|---|---|---|
+| `RAG2.py` | NEW | openpyxl + 열 인덱스(row[0]~row[8]) 기반 xlsx 파싱. 보안 해제 후 xlsx 직접 적재용. 1~2행 병합 헤더 스킵, 3행부터 데이터 읽기 |
+
+---
+
 ## 2026-03-05 10:50 — Glossary 적재 파이프라인 구현 (nl2sql 프로젝트)
 
 ### 변경 파일 요약
@@ -10,6 +27,18 @@
 | `RAG.py` | MODIFY | `load_glossary_from_xlsx` (xlwings 파싱) 및 `insert_glossary` 함수 추가. `__main__` 진입점을 `insert_glossary`로 변경 |
 | `rag_utils.py` | MODIFY | `glossary_utils` import 주석 해제 → `glossary_preprocessing` 함수 활성화 |
 
-### 비고
-- xlsx 파싱 라이브러리로 `xlwings` 채택 (사내 보안 정책으로 pandas 사용 불가)
-- `glossary.xlsx` 기준 9개 컬럼, 1개 데이터 행 파싱 로컬 검증 완료
+## 2026-03-05 13:55 — xlsx 파싱 → CSV 파싱으로 교체 (`RAG.py`)
+
+### 변경 파일
+
+| 파일 | 변경 내용 |
+|---|---|
+| `RAG.py` | `load_glossary_from_xlsx` → `load_glossary_from_csv` 로 교체 (openpyxl → csv 내장 모듈) |
+| `RAG.py` | `insert_glossary` 파라미터 `xlsx_path` → `csv_path`, 내부 호출 및 `__main__` 파일명도 csv로 변경 |
+
+### 변경 이유
+xlsx 파일이 사내 보안 프로그램에 의해 암호화되어 openpyxl로 파싱 불가(`BadZipFile`).
+CSV는 순수 텍스트라 암호화 대상이 아니며, Python 내장 `csv` 모듈로 외부 라이브러리 없이 파싱 가능.
+
+---
+

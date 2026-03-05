@@ -8,7 +8,6 @@ def glossary_preprocessing(texts: list) -> list:
     - None 또는 빈 문자열 항목 제거
     - 앞뒤 공백 제거 (strip)
     - 연속 공백/탭/줄바꿈을 단일 공백으로 정규화
-    - 마침표 누락 시 문장 끝에 마침표 추가 (선택)
     """
     cleaned = []
     for text in texts:
