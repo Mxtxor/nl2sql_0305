@@ -1,0 +1,4 @@
+[헤더 수]: 9
+[헤더]: ['standard_term (논리명)', 'standard_term_nm (물리명)', 'standard_term_desp (표준용어 설명)', 'cd_grp_id (코드그룹아이디)', 'cd_grp_nm (코드그룹명)', 'cmn_cd_nm (공통코드명)', 'cmn_cd (공통코드)', 'cd_grp_eng_nm(코드그룹영문명)', '칼럼ID']
+
+[행 3]: [('standard_term (논리명)', '교환유형코드'), ('standard_term_nm (물리명)', 'EXCH_TYPE_CD'), ('standard_term_desp (표준용어 설명)', '교환 유형을 정의하는 코드다.'), ('cmn_cd_nm (공통코드명)', '동종교환'), ('cmn_cd (공통코드)', '01'), ('칼럼ID', 'exch_type_id')]
