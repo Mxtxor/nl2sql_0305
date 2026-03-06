@@ -1,5 +1,13 @@
 # Edit Log
 
+## 2026-03-06 08:56 — _clean 함수 `[NULL]` 처리 변경
+
+| 파일 | 변경 내용 |
+|---|---|
+| `glossary_utils.py` | `_clean()` 함수에서 `[NULL]` 문자열을 빈 문자열(`''`) 대신 `None`으로 반환하도록 수정. 반환 타입 `str` → `str \| None` |
+
+---
+
 ## 2026-03-05 17:27 — glossary_preprocessing 리팩토링
 
 | 파일 | 변경 내용 |

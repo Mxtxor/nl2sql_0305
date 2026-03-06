@@ -63,11 +63,13 @@ def glossary_preprocessing(path: str):
     return raw_data, metadatas
 
 
-def _clean(val) -> str:
-    """NaN, None, '[NULL]' 문자열을 빈 문자열로 변환하고 앞뒤 공백 제거"""
+def _clean(val) -> str | None:
+    """NaN, None을 빈 문자열로, '[NULL]' 문자열은 None으로 변환하고 앞뒤 공백 제거"""
     if val is None:
         return ''
     s = str(val).strip()
-    if s.lower() in ('nan', '[null]', ''):
+    if s.lower() == '[null]':
+        return None
+    if s.lower() in ('nan', ''):
         return ''
     return s

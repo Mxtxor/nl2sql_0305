@@ -15,7 +15,7 @@ def insert_glossary(xlsx_path: str):
     print(f"[Glossary] 파싱 완료: {len(raw_data)}개 항목")
 
     client.ingest_glossary(raw_data, metadatas)
-
+ㅇ
 
 if __name__ == "__main__":
     insert_glossary("목 록 코 드 정 리 (to-be)_v0.2.xlsx")
