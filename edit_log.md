@@ -1,5 +1,23 @@
 # Edit Log
 
+## 2026-03-06 16:53 — B 프로세스: tempData.xlsx 2시트 조인 적재 구현
+
+| 파일 | 변경 종류 | 내용 |
+|---|---|---|
+| `glossary_utils3.py` | NEW | '렌탈멤버십채널집계' + '표준용어' 2시트 조인 전처리. 시트1 E열(칼럼ID) ↔ 시트2 D열(물리명) 대소문자 무시 매칭. 매칭 실패 시 빈 문자열로 채워 전량 적재 |
+| `RAG4.py` | NEW | tempData.xlsx 적재 진입점. `rag_utils.SchemaIngester.ingest_glossary()` 재사용. `__main__`에서 `insert_glossary3("tempData.xlsx")` 호출 |
+
+---
+
+## 2026-03-06 16:04 — glossary2.xlsx 적재 파이프라인 신규 구현
+
+| 파일 | 변경 종류 | 내용 |
+|---|---|---|
+| `glossary_utils2.py` | NEW | 7열(A~G) 단순 헤더 구조 전용 전처리 함수. `glossary_preprocessing2(path)` + `_clean2()` 헬퍼. 논리명 빈 행도 스킵 없이 적재 |
+| `RAG3.py` | NEW | glossary2.xlsx 적재 진입점. `rag_utils.SchemaIngester.ingest_glossary()` 재사용. `__main__`에서 `insert_glossary2("glossary2.xlsx")` 호출 |
+
+---
+
 ## 2026-03-06 08:56 — _clean 함수 `[NULL]` 처리 변경
 
 | 파일 | 변경 내용 |
